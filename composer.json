@@ -1,0 +1,34 @@
+{
+    "name": "edgallois/memoria",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MsgPackPhp\\": "src/"
+        }
+    },
+    "config": {
+        "vendor-dir": "vendor",
+        "preferred-install": "dist"
+    },
+    "authors": [
+        {
+            "name": "Decebal Dobrica",
+            "email": "dd@funeralzone.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "rybakit/msgpack": "^0.2.2"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.2",
+        "phpunit/phpunit": "^5.7",
+        "vladahejda/phpunit-assert-exception": "^1.0",
+        "squizlabs/php_codesniffer": "^2.7",
+        "mockery/mockery": "dev-master",
+        "fzaninotto/faker": "~1.4",
+        "codeception/codeception": "^2.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
