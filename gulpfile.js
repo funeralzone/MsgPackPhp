@@ -5,6 +5,9 @@ var shell = require('gulp-shell');
 var phpcs = require('gulp-phpcs');
 var phpcbf = require('gulp-phpcbf');
 var gutil = require('gutil');
+var notify   = require('gulp-notify'),
+    codecept = require('gulp-codeception');
+    _ = require('lodash');
 
 gulp.task('dev::tests', function() {
     var options = {
@@ -66,3 +69,21 @@ gulp.task('phpcbf', function () {
         .on('error', gutil.log)
         .pipe(gulp.dest('src'));
 });
+
+gulp.task('codecept', function() {
+    gulp.src('codeception.yml')
+        .pipe(phpunit('', {notify: true}))
+        .on('error', notify.onError(testNotification('fail', 'phpunit')))
+        .pipe(notify(testNotification('pass', 'phpunit')));
+});
+
+
+function testNotification(status, pluginName, override) {
+    var options = {
+        title:   ( status == 'pass' ) ? 'Tests Passed' : 'Tests Failed',
+        message: ( status == 'pass' ) ? '\n\nAll tests have passed!\n\n' : '\n\nOne or more tests failed...\n\n',
+        icon:    __dirname + '/node_modules/gulp-' + pluginName +'/assets/test-' + status + '.png'
+    };
+    options = _.merge(options, override);
+    return options;
+}
