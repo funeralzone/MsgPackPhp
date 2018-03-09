@@ -85,7 +85,7 @@ final class ClientBackChannel implements ClientChannelInterface
      * @return mixed
      * @throws MessagePackRPCNetworkException
      */
-    private function readMsg($io, $size)
+    protected function readMsg($io, $size)
     {
         stream_set_blocking($io, 0);
 
@@ -112,7 +112,7 @@ final class ClientBackChannel implements ClientChannelInterface
      * @param $port
      * @return mixed|null
      */
-    private function connect($host, $port)
+    protected function connect($host, $port)
     {
         if (!$this->reuse_connection) {
             return $this->sockopen($host, $port);
@@ -139,7 +139,7 @@ final class ClientBackChannel implements ClientChannelInterface
      * @param $port
      * @return mixed
      */
-    private function sockopen($host, $port)
+    protected function sockopen($host, $port)
     {
         $method = self::$allow_persistent ? 'pfsockopen' : 'fsockopen';
         return call_user_func($method, $host, $port);

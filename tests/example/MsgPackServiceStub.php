@@ -5,7 +5,7 @@
  * Date: 2/16/18
  */
 
-namespace Memoria\Application\Services\MsgPack;
+namespace MsgPack\Tests\Example;
 
 use MsgPackPhp\Client\ClientInterface;
 
