@@ -1,11 +1,11 @@
 <?php
 /**
- * Created by memoria.
- * User: decebal.dobrica
+ * Created by MsgPackPhp.
+ * User: decebal
  * Date: 2/20/18
  */
 
-namespace MsgPackPhp;
+namespace MsgPackPhp\Client;
 
 interface ClientChannelInterface
 {
@@ -27,7 +27,7 @@ interface ClientChannelInterface
 
     /**
      * @param $data
-     * @return Response
+     * @return ResponseInterface
      */
-    public function clientRecvObject($data) : Response;
+    public function clientRecvObject($data) : ResponseInterface;
 }

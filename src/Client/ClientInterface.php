@@ -1,11 +1,11 @@
 <?php
 /**
- * Created by memoria.
- * User: decebal.dobrica
+ * Created by MsgPackPhp.
+ * User: decebal
  * Date: 2/20/18
  */
 
-namespace MsgPackPhp;
+namespace MsgPackPhp\Client;
 
 interface ClientInterface
 {

@@ -1,13 +1,14 @@
 <?php
 /**
- * Created by memoria.
- * User: decebal.dobrica
+ * Created by MsgPackPhp.
+ * User: decebal
  * Date: 2/16/18
  */
 
 namespace Memoria\Application\Services\MsgPack;
 
-use MsgPackPhp\ClientInterface;
+use MsgPackPhp\Client\ClientInterface;
+
 
 /**
  * Class MsgPackService

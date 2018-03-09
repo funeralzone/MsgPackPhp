@@ -1,7 +1,7 @@
 <?php
 /**
- * Created by memoria.
- * User: decebal.dobrica
+ * Created by MsgPackPhp.
+ * User: decebal
  * Date: 2/19/18
  *
  * Inspiration and some mechanics from:
@@ -9,11 +9,11 @@
  *
  */
 
-namespace MsgPackPhp;
+namespace MsgPackPhp\Client;
 
 use MsgPackPhp\Exceptions\MessagePackRPCRequestException;
 
-class Client implements ClientInterface
+final class Client implements ClientInterface
 {
     private $back;
     private $host;
@@ -28,7 +28,7 @@ class Client implements ClientInterface
      */
     public function __construct(string $host, int $port, ClientChannelInterface $back = null)
     {
-        $this->back = $back == null ? new BackChannel() : $back;
+        $this->back = $back == null ? new ClientBackChannel() : $back;
         $this->host = $host;
         $this->port = $port;
     }

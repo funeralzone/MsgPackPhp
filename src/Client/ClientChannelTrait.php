@@ -1,14 +1,17 @@
 <?php
 /**
- * Created by memoria.
- * User: decebal.dobrica
+ * Created by MsgPackPhp.
+ * User: decebal
  * Date: 2/22/18
  */
 
-namespace MsgPackPhp;
+namespace MsgPackPhp\Client;
 
+use MsgPackPhp\EncoderTrait;
 use MsgPackPhp\Exceptions\MessagePackRPCNetworkException;
 use MsgPackPhp\Exceptions\MessagePackRPCProtocolException;
+use MsgPackPhp\Response;
+use MsgPackPhp\ResponseInterface;
 
 trait ClientChannelTrait
 {
@@ -60,10 +63,10 @@ trait ClientChannelTrait
 
     /**
      * @param $data
-     * @return Response
+     * @return ResponseInterface
      * @throws MessagePackRPCProtocolException
      */
-    public function clientRecvObject($data): Response
+    public function clientRecvObject($data): ResponseInterface
     {
         $type = $data[0];
         $code = $data[1];

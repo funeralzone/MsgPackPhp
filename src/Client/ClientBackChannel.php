@@ -5,23 +5,18 @@
  * Date: 2/19/18
  */
 
-namespace MsgPackPhp;
+namespace MsgPackPhp\Client;
 
-use MsgPackPhp\Client\ClientChannelInterface;
-use MsgPackPhp\Client\ClientChannelTrait;
 use MsgPackPhp\Exceptions\MessagePackRPCNetworkException;
 use MessagePack\BufferUnpacker;
-use MsgPackPhp\Server\ServerChannelInterface;
-use MsgPackPhp\Server\ServerChannelTrait;
 
 /**
  * Class BackChannel
  * @package MsgPackPhp
  */
-final class BackChannel implements ClientChannelInterface, ServerChannelInterface
+final class ClientBackChannel implements ClientChannelInterface
 {
     use ClientChannelTrait;
-    use ServerChannelTrait;
 
     public $size = 1024;
     public static $shared_client_socket = null;
@@ -90,7 +85,7 @@ final class BackChannel implements ClientChannelInterface, ServerChannelInterfac
      * @return mixed
      * @throws MessagePackRPCNetworkException
      */
-    protected function readMsg($io, $size)
+    private function readMsg($io, $size)
     {
         stream_set_blocking($io, 0);
 
@@ -117,7 +112,7 @@ final class BackChannel implements ClientChannelInterface, ServerChannelInterfac
      * @param $port
      * @return mixed|null
      */
-    protected function connect($host, $port)
+    private function connect($host, $port)
     {
         if (!$this->reuse_connection) {
             return $this->sockopen($host, $port);
@@ -144,7 +139,7 @@ final class BackChannel implements ClientChannelInterface, ServerChannelInterfac
      * @param $port
      * @return mixed
      */
-    protected function sockopen($host, $port)
+    private function sockopen($host, $port)
     {
         $method = self::$allow_persistent ? 'pfsockopen' : 'fsockopen';
         return call_user_func($method, $host, $port);
