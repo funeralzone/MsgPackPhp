@@ -7,6 +7,8 @@
 
 namespace MsgPackPhp\Client;
 
+use MsgPackPhp\ResponseInterface;
+
 interface ClientChannelInterface
 {
     /**
