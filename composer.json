@@ -1,5 +1,6 @@
 {
-    "name": "edgallois/memoria",
+    "name": "funeralzone/MsgPackPhp",
+    "description": "This package tries to leverage the power of Message Pack and msgpack.php. Mainly this uses https://github.com/msgpack-rpc/msgpack-rpc-php while updating the underlying code & upgrading to the above mentioned msgpack.php package.",
     "type": "project",
     "autoload": {
         "psr-4": {
